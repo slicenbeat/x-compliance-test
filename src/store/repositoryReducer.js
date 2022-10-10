@@ -1,8 +1,8 @@
 const GET_REPOSITORY = "GET_REPOSITORY";
 const defaultState = {
-  avatar: "",
-  login: "",
-  repositories: [],
+  authorName: "",
+  sha: "",
+  date: "",
 };
 
 export const repositoryReducer = (state = defaultState, action) => {
@@ -10,9 +10,9 @@ export const repositoryReducer = (state = defaultState, action) => {
     case GET_REPOSITORY:
       return {
         ...state,
-        avatar: action.payload.avatar,
-        login: action.payload.login,
-        repositories: action.payload.repositories,
+        authorName: action.payload.authorName,
+        sha: action.payload.sha,
+        date: action.payload.date,
       };
     default:
       return state;

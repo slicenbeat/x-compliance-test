@@ -6,7 +6,7 @@ export const fetchRepo = (repoUser) => {
     axios
       .get(`https://api.github.com/repos/${repoUser}/commits`)
       .then((response) => {
-        getRepositoryAction(
+        dispatch(getRepositoryAction(
           response.map((repository) => {
             return {
               authorName: repository.commit.author.name,
@@ -14,7 +14,7 @@ export const fetchRepo = (repoUser) => {
               date: repository.commit.date.slice(0, 10),
             };
           })
-        );
+        ));
       });
   };
 };
