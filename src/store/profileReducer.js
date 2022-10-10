@@ -1,7 +1,7 @@
 const GET_PROFILE = "GET_PROFILE";
 const defaultState = {
   avatar: "",
-  login: "",
+  name: "",
   repositories: [],
 };
 
@@ -11,7 +11,7 @@ export const profileReducer = (state = defaultState, action) => {
       return {
         ...state,
         avatar: action.payload.avatar,
-        login: action.payload.login,
+        name: action.payload.name,
         repositories: action.payload.repositories,
       };
     default:
