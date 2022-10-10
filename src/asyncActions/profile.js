@@ -1,19 +1,21 @@
-import { getProfileAction } from "./store/getProfileAction";
+import { getProfileAction } from "../store/profileReducer";
 import axios from "axios";
 
 export const fetchProfile = (userName) => {
   return function (dispatch) {
     axios
       .all([
-        axios.get(`https://api.github.com/user/${userName}`),
-        axios.get(`https://api.github.com/user/${userName}/repos`),
+        axios.get(`https://api.github.com/users/${userName}`),
+        axios.get(`https://api.github.com/users/${userName}/repos`),
       ])
       .then(
-        axios.spread((user, repositories) => {
+        axios.spread((...responses) => {
+          const user = responses[0].data;
+          const repositories = responses[1].data;
           dispatch(
             getProfileAction({
               avatar: user.avatar_url,
-              name: user.name,
+              name: user.name??user.login,
               repositories: repositories.map((repository) => {
                 return {
                   name: repository.name,
@@ -25,6 +27,9 @@ export const fetchProfile = (userName) => {
             })
           );
         })
-      );
+      )
+      .catch((error)=>{
+        console.log(error)
+      });
   };
 };

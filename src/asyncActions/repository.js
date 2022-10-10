@@ -6,15 +6,18 @@ export const fetchRepo = (repoUser) => {
     axios
       .get(`https://api.github.com/repos/${repoUser}/commits`)
       .then((response) => {
-        dispatch(getRepositoryAction(
-          response.map((repository) => {
-            return {
-              authorName: repository.commit.author.name,
-              sha: repository.sha,
-              date: repository.commit.date.slice(0, 10),
-            };
-          })
-        ));
+        const repositories = response.data;
+        dispatch(
+          getRepositoryAction(
+            repositories.map((repository) => {
+              return {
+                authorName: repository.commit.author.name,
+                sha: repository.sha,
+                date: repository.commit.date.slice(0, 10),
+              };
+            })
+          )
+        );
       });
   };
 };
