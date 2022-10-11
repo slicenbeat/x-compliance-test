@@ -23,10 +23,7 @@ const ProfilePanel = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col w-300 justify-center">
-        <Avatar src={avatar} />
-        <p className="mb-[50px] text-xs text-center font-semibold inline-block py-1 px-2 uppercase rounded text-black-600 bg-blue-200 uppercase last:mr-0 mr-1">
-          {name}
-        </p>
+        <Avatar src={avatar} userName={name} />
       </div>
 
       <div>
