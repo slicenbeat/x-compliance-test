@@ -15,7 +15,6 @@ export const fetchProfile = (userName) => {
         axios.spread((...responses) => {
           const user = responses[0].data;
           const repositories = responses[1].data;
-          console.log(repositories)
           dispatch(
             getProfileAction({
               avatar: user.avatar_url,
