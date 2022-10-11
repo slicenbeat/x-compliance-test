@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Repositories from "../Repositories";
 import Avatar from "../Avatar";
 import Commits from "../Commits";
@@ -6,16 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRepo } from "../../asyncActions/repository";
 const ProfilePanel = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
+  const { avatar, name } = useSelector((state) => state.profile);
+  const [currentName, setCurrentName] = useState(name);
+  useEffect(() => {
+    if (currentName !== name) {
+      setIsVisible(false);
+    }
+  }, [name]);
   const handleClick = (event) => {
     if (event.target.hasAttribute("data-repo-user")) {
-      console.log("Робит");
       dispatch(fetchRepo(event.target.getAttribute("data-repo-user")));
       setIsVisible(true);
     }
   };
-  const dispatch = useDispatch();
-
-  const { avatar, name } = useSelector((state) => state.profile);
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col w-300 justify-center">

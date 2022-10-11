@@ -5,7 +5,8 @@ const defaultState = {
   name: "",
   repoUser: "",
   repositories: [],
-  visible: false,
+  hidden: true,
+  error: false,
 };
 
 export const profileReducer = (state = defaultState, action) => {
@@ -17,11 +18,13 @@ export const profileReducer = (state = defaultState, action) => {
         name: action.payload.name,
         repositories: action.payload.repositories,
         repoUser: action.payload.repoUser,
-        visible: true,
+        hidden: false,
+        error: false
       };
     case GET_ERROR:
       return {
-        visible: false,
+        hidden: true,
+        error: true
       };
 
     default:
