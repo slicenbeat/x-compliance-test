@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/x-compliance-test/static/css/main.5a13ae68.css",
+    "main.js": "/x-compliance-test/static/js/main.53eb33df.js",
+    "index.html": "/x-compliance-test/index.html",
+    "main.5a13ae68.css.map": "/x-compliance-test/static/css/main.5a13ae68.css.map",
+    "main.53eb33df.js.map": "/x-compliance-test/static/js/main.53eb33df.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a13ae68.css",
+    "static/js/main.53eb33df.js"
+  ]
+}
