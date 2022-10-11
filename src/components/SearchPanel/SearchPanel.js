@@ -12,7 +12,6 @@ const SearchPanel = () => {
         value={userName}
         onChange={(e) => {
           setUserName(e.target.value);
-          console.log(userName);
         }}
       />
       <button
