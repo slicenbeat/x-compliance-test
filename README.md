@@ -15,6 +15,7 @@
 
 - React (function components, useState, useEffect),
 - Redux, Redux-thunk,
+- Tailwindcss,
 - Axios (для API Github).
 
 ## Установка локально
