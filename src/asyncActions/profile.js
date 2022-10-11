@@ -1,4 +1,7 @@
-import { getProfileAction } from "../store/profileReducer";
+import {
+  getProfileAction,
+  getProfileErrorAction,
+} from "../store/profileReducer";
 import axios from "axios";
 
 export const fetchProfile = (userName) => {
@@ -12,24 +15,26 @@ export const fetchProfile = (userName) => {
         axios.spread((...responses) => {
           const user = responses[0].data;
           const repositories = responses[1].data;
+          console.log(repositories)
           dispatch(
             getProfileAction({
               avatar: user.avatar_url,
-              name: user.name??user.login,
+              name: user.name ?? user.login,
               repositories: repositories.map((repository) => {
                 return {
                   name: repository.name,
                   description: repository.description,
                   language: repository.language,
                   starsCount: repository.stargazers_count,
+                  repoUser: repository.full_name
                 };
               }),
             })
           );
         })
       )
-      .catch((error)=>{
-        console.log(error)
+      .catch(() => {
+        dispatch(getProfileErrorAction());
       });
   };
 };

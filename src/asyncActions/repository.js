@@ -13,7 +13,7 @@ export const fetchRepo = (repoUser) => {
               return {
                 authorName: repository.commit.author.name,
                 sha: repository.sha,
-                date: repository.commit.date.slice(0, 10),
+                date: repository.commit.author.date.slice(0, 10),
               };
             })
           )

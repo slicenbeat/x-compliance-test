@@ -1,18 +1,13 @@
 const GET_REPOSITORY = "GET_REPOSITORY";
 const defaultState = {
-  authorName: "",
-  sha: "",
-  date: "",
+  commits: [],
 };
 
 export const repositoryReducer = (state = defaultState, action) => {
   switch (action.type) {
     case GET_REPOSITORY:
       return {
-        ...state,
-        authorName: action.payload.authorName,
-        sha: action.payload.sha,
-        date: action.payload.date,
+        ...state, commits:[...action.payload]
       };
     default:
       return state;
